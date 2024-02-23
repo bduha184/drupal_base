@@ -1,0 +1,20 @@
+name: myapp
+recipe: drupal10
+config:
+  webroot: web
+  # VS CodeでXdebugを使用する設定
+  xdebug: true
+  config:
+    php: .vscode/php.ini
+#環境変数をセット
+env_file:
+  - .env
+#メールサーバーをサービスとして追加
+services:
+  mailhog:
+    type: mailhog
+    hogfrom:
+        - appserver
+  # phpMyAdminをサービスとして追加
+  phpmyadmin:
+    type: phpmyadmin
